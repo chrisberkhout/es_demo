@@ -1,23 +1,33 @@
-<h1>Listing notes</h1>
+<p id="notice"><%= notice %></p>
 
-<table>
-  <tr>
-    <th>Body</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h1>Add a note</h1>
+<%= render 'form' %>
+
+<hr/>
+
+<h1>Search your notes</h1>
+<form action="" method="get">
+  <input type="textbox" name="q" size="40" value="<%= @query %>"/>
+  <input type="submit" value="Search"/>
+  <a href="<%= notes_path %>">Show all</a>
+</form>
+
+<br/>
+<hr/>
+
+<% if @query.blank? %>
+  <h1>All your notes:</h1>
+<% else %>
+  <h1>Notes matching "<%= @query %>"</h1>
+<% end %>
+
+<br/>
 
 <% @notes.each do |note| %>
-  <tr>
-    <td><%= note.body %></td>
-    <td><%= link_to 'Show', note %></td>
-    <td><%= link_to 'Edit', edit_note_path(note) %></td>
-    <td><%= link_to 'Destroy', note, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+  <div class="notebody"><%= note.body %></div>
+  <div>
+    <%= link_to 'Edit', edit_note_path(note) %>
+    <%= link_to 'Delete', note, confirm: 'Are you sure?', method: :delete %>
+  </div>
+  <br/>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Note', new_note_path %>

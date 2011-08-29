@@ -6,5 +6,6 @@ namespace :es do
   desc "Create the ElasticSearch index for the current environment"
   task :create => :environment do
     Tire::Index.new(ES_INDEX_NAME).create
+    Note.touch_es
   end
 end
