@@ -1,6 +1,18 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails/all'
+require "rails"
+[
+  # 'active_record',
+  'action_controller',
+  'action_mailer',
+  'active_resource',
+  'rails/test_unit',
+].each do |framework|
+  begin
+    require "#{framework}/railtie"
+  rescue LoadError
+  end
+end
 
 # If you have a Gemfile, require the default gems, the ones in the
 # current environment and also include :assets gems if in development
