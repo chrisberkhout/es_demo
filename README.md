@@ -1,6 +1,7 @@
 # es_demo
 
 A very simple Rails application that uses ElasticSearch as its primary data store.
+More info in the [blog post](http://chrisberkhout.com/blog/elasticsearch-as-a-primary-data-store/).
 
 ## Get it running
 
